@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09-jun-2015 15:28:25 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping package="dominio">
+ <class name="JobHistory" table="JOB_HISTORY">
+  <comment>Table that stores job history of the employees. If an employee changes departments within the job or changes jobs within the department, new rows get inserted
+        into this table with old job information of the employee. Contains a complex primary key: employee_id+start_date. Contains 25 rows. References with jobs, employees, and
+        departments tables.</comment>
+  <composite-id class="JobHistoryId" mapped="false" name="id" unsaved-value="undefined">
+   <key-property name="employeeId" type="int">
+    <column name="EMPLOYEE_ID" precision="6" scale="0"/>
+   </key-property>
+   <key-property name="startDate" type="date">
+    <column length="7" name="START_DATE"/>
+   </key-property>
+  </composite-id>
+  <many-to-one class="Departments" fetch="select" name="departments">
+   <column name="DEPARTMENT_ID" precision="4" scale="0">
+    <comment>Department id in which the employee worked in the past; foreign key to deparment_id column in the departments table</comment>
+   </column>
+  </many-to-one>
+  <many-to-one class="Jobs" fetch="select" name="jobs">
+   <column length="10" name="JOB_ID" not-null="true">
+    <comment>Job role in which the employee worked in the past; foreign key to job_id column in the jobs table. A not null column.</comment>
+   </column>
+  </many-to-one>
+  <many-to-one class="Employees" fetch="select" insert="false"
+   name="employees" update="false">
+   <column name="EMPLOYEE_ID" not-null="true" precision="6" scale="0">
+    <comment>A not null column in the complex primary key employee_id+start_date. Foreign key to employee_id column of the employee table</comment>
+   </column>
+  </many-to-one>
+  <property generated="never" lazy="false" name="endDate" type="date">
+   <column length="7" name="END_DATE" not-null="true">
+    <comment>Last day of the employee in this job role. A not null column. Must be greater than the start_date of the job_history table. (enforced by constraint
+                jhist_date_interval)</comment>
+   </column>
+  </property>
+ </class>
+</hibernate-mapping>

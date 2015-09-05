@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09-jun-2015 15:28:25 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping package="dominio">
+ <class name="Departments" table="DEPARTMENTS">
+  <comment>Departments table that shows details of departments where employees work. Contains 27 rows; references with locations, employees, and job_history
+        tables.</comment>
+  <id name="departmentId" type="short">
+   <column name="DEPARTMENT_ID" precision="4" scale="0"/>
+   <generator class="assigned"/>
+  </id>
+  <many-to-one class="Locations" fetch="select" name="locations">
+   <column name="LOCATION_ID" precision="4" scale="0">
+    <comment>Location id where a department is located. Foreign key to location_id column of locations table.</comment>
+   </column>
+  </many-to-one>
+  <many-to-one class="Employees" fetch="select" name="employees">
+   <column name="MANAGER_ID" precision="6" scale="0">
+    <comment>Manager_id of a department. Foreign key to employee_id column of employees table. The manager_id column of the employee table references this
+                column.</comment>
+   </column>
+  </many-to-one>
+  <property generated="never" lazy="false" name="departmentName" type="string">
+   <column length="30" name="DEPARTMENT_NAME" not-null="true">
+    <comment>A not null column that shows name of a department. Administration, Marketing, Purchasing, Human Resources, Shipping, IT, Executive, Public Relations,
+                Sales, Finance, and Accounting.</comment>
+   </column>
+  </property>
+  <set fetch="select" inverse="true" lazy="true" name="employeeses"
+   sort="unsorted" table="EMPLOYEES">
+   <key>
+    <column name="DEPARTMENT_ID" precision="4" scale="0">
+     <comment>Department id where employee works; foreign key to department_id column of the departments table</comment>
+    </column>
+   </key>
+   <one-to-many class="Employees"/>
+  </set>
+  <set fetch="select" inverse="true" lazy="true" name="jobHistories"
+   sort="unsorted" table="JOB_HISTORY">
+   <key>
+    <column name="DEPARTMENT_ID" precision="4" scale="0">
+     <comment>Department id in which the employee worked in the past; foreign key to deparment_id column in the departments table</comment>
+    </column>
+   </key>
+   <one-to-many class="JobHistory"/>
+  </set>
+ </class>
+</hibernate-mapping>

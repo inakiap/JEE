@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09-jun-2015 15:28:25 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping package="dominio">
+ <class name="Regions" table="REGIONS">
+  <id name="regionId" type="big_decimal">
+   <column name="REGION_ID" precision="22" scale="0"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="false" name="regionName" type="string">
+   <column length="25" name="REGION_NAME"/>
+  </property>
+  <set fetch="select" inverse="true" lazy="true" name="countrieses"
+   sort="unsorted" table="COUNTRIES">
+   <key>
+    <column name="REGION_ID" precision="22" scale="0">
+     <comment>Region ID for the country. Foreign key to region_id column in the departments table.</comment>
+    </column>
+   </key>
+   <one-to-many class="Countries"/>
+  </set>
+ </class>
+</hibernate-mapping>

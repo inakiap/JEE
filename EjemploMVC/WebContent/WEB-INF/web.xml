@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>EjemploMVC</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description>Servlet para mostrar departamentos</description>
+    <display-name>departamentos</display-name>
+    <servlet-name>departamentos</servlet-name>
+    <servlet-class>servlets.ServletListadoDepartamentos</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>departamentos</servlet-name>
+    <url-pattern>/departamentos</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Servlet de Listado Empleados MVC</description>
+    <display-name>listado</display-name>
+    <servlet-name>listado</servlet-name>
+    <servlet-class>servlets.ServletEmpleadosDepartamento</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>listado</servlet-name>
+    <url-pattern>/listado</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Servlet para manejar errores/excepciones</description>
+    <display-name>error</display-name>
+    <servlet-name>error</servlet-name>
+    <servlet-class>servlets.ServlertCapturaErrores</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>error</servlet-name>
+    <url-pattern>/error</url-pattern>
+  </servlet-mapping>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/error</location>
+  </error-page>
+  <error-page>
+    <exception-type> javax.servlet.ServletException </exception-type>
+    <location>/error</location>
+  </error-page>
+  <error-page>
+    <exception-type> java.lang.Throwable </exception-type>
+    <location>/error</location>
+  </error-page>
+</web-app>

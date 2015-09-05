@@ -1,0 +1,16 @@
+#empleados{
+	border: 1px solid black;
+	width:400px;
+	text-align:center;
+}
+
+#empleados tr:hover{
+	background: grey;
+	cursor:pointer;
+}
+
+div {
+	margin:20px;
+	padding: 10px;
+	float:left
+}

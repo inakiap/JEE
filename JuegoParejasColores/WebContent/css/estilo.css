@@ -1,0 +1,31 @@
+body{
+	text-align: center;
+}
+
+/* h1 { */
+/* 	color:white; */
+/* } */
+
+#marco {
+	width : 90%;
+	max-width: 800px;
+	paddin-bottom: 90%;
+	opacity: 1;
+	display: block;
+	margin: auto;
+	
+}
+
+.fila {
+	float:left;
+	width : 20%;
+	padding-bottom: 20%;
+	border-radius: 10px; 	
+}
+
+#reloj { 
+	padding: 5px 10px;
+    font: normal 3em arial;
+    text-align: center; 
+	margin: 20px;    
+}

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" id="WebApp_ID" version="2.4">
+  <display-name>EjemplosAjax</display-name>
+  <welcome-file-list>
+    <welcome-file>departamentos</welcome-file>
+    <welcome-file>reinicio.jsp</welcome-file>
+    <welcome-file>inicio22.html</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description>Servlet cargar menú</description>
+    <display-name>CargarMenu</display-name>
+    <servlet-name>CargarMenu</servlet-name>
+    <servlet-class>servlets.CargarMenu</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CargarMenu</servlet-name>
+    <url-pattern>/CargarMenu</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Servlet cargar menú select</description>
+    <display-name>CargaMenuSelect</display-name>
+    <servlet-name>CargaMenuSelect</servlet-name>
+    <servlet-class>servlets.CargaMenuSelect</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CargaMenuSelect</servlet-name>
+    <url-pattern>/CargaMenuSelect</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Servlet cargar trabajadores</description>
+    <display-name>CargarTrabajadores</display-name>
+    <servlet-name>CargarTrabajadores</servlet-name>
+    <servlet-class>servlets.CargarTrabajadores</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CargarTrabajadores</servlet-name>
+    <url-pattern>/CargarTrabajadores</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Servlet para probar JSons</description>
+    <display-name>CargaJSON</display-name>
+    <servlet-name>CargaJSON</servlet-name>
+    <servlet-class>JSON.CargaJSON</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CargaJSON</servlet-name>
+    <url-pattern>/CargaJSON</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Servlet para leer los empleados del departamento</description>
+    <display-name>empleados</display-name>
+    <servlet-name>empleados</servlet-name>
+    <servlet-class>servlets.ServletCargarEmpleados</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>empleados</servlet-name>
+    <url-pattern>/empleados</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Servlet listar departamentos</description>
+    <display-name>departamentos</display-name>
+    <servlet-name>departamentos</servlet-name>
+    <servlet-class>servlets.ServletListadoDepartamentos</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>departamentos</servlet-name>
+    <url-pattern>/departamentos</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Servlet para dar el detalle del empleado</description>
+    <display-name>detalleEmpleado</display-name>
+    <servlet-name>detalleEmpleado</servlet-name>
+    <servlet-class>servlets.ServletDetalleEmpleado</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>detalleEmpleado</servlet-name>
+    <url-pattern>/detalleEmpleado</url-pattern>
+  </servlet-mapping>
+</web-app>
